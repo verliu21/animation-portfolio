@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from "gatsby"
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
@@ -6,6 +7,11 @@ import { StaticQuery, graphql } from 'gatsby'
 import Header from './header'
 import './layout.css'
 
+const ListLink = props =>(
+  <li style={{display:'inline-block', marginRight: '1rem'}}>
+  <Link to={props.to}>{props.children}</Link>
+  </li>
+)
 const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`
@@ -17,6 +23,9 @@ const Layout = ({ children }) => (
         }
       }
     `}
+
+     
+    
     render={data => (
       <>
         <Helmet
@@ -32,11 +41,23 @@ const Layout = ({ children }) => (
         <div
           style={{
             margin: '0 auto',
-            maxWidth: 960,
+            maxWidth: 650,
             padding: '0px 1.0875rem 1.45rem',
             paddingTop: 0,
           }}
+          
         >
+            <header style={{ marginBottom: `1.5rem` }}>
+      <ul style={{ listStyle: `none`, marginLeft:"74px" }}>
+        <ListLink to="/">Home</ListLink>
+        <ListLink to="/animation/">Animation</ListLink>
+        <ListLink to="/lighting/">Lighting</ListLink>
+        <ListLink to="/resume/">Resume</ListLink>
+        <ListLink to="/blog/">Blog</ListLink>
+        <ListLink to="/contact/">Contact</ListLink>
+      </ul>
+    </header>
+
           {children}
         </div>
       </>
