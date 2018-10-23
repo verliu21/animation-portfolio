@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
+import Footer from './footer'
 import './layout.css'
 
 const ListLink = props =>(
@@ -37,7 +38,7 @@ const Layout = ({ children }) => (
         >
           <html lang="en" />
         </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} />
+          <Header siteTitle={data.site.siteMetadata.title} /> 
         <div
           style={{
             margin: '0 auto',
@@ -46,9 +47,9 @@ const Layout = ({ children }) => (
             paddingTop: 0,
           }}
           
-        >
+        >  
             <header style={{ marginBottom: `1.5rem` }}>
-      <ul style={{ listStyle: `none`, marginLeft:"74px" }}>
+      <ul style={{ listStyle: `none`, marginLeft:"3 px" }}>
         <ListLink to="/">Home</ListLink>
         <ListLink to="/animation/">Animation</ListLink>
         <ListLink to="/lighting/">Lighting</ListLink>
@@ -59,7 +60,9 @@ const Layout = ({ children }) => (
     </header>
 
           {children}
-        </div>
+        </div> 
+        <Footer siteTitle={data.site.siteMetadata.title} />
+        
       </>
     )}
   />
